@@ -5,9 +5,12 @@ import styles from './styles.js';
 import img from '../../../assets/images/second-splash.jpg';
 import logo from '../../../assets/images/logo.png';
 import Button from '../../atoms/Buttons/LoginOption';
-
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 import authContext from '../../../context/index.js';
-import {getInfoFromToken, loginWithGoogle} from '../../../helpers/login';
+import {getInfoFromToken, createUser} from '../../../helpers/login';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
 
 import SplashScreen from 'react-native-splash-screen';
@@ -21,6 +24,31 @@ export default function LoginOption({navigation}) {
 
   const handleLogin = () => {};
 
+  const loginWithGoogle = () => {
+    GoogleSignin.configure({
+      androidClientId:
+        '965191305920-fijnn21379t7g3jietsfpul13of914bp.apps.googleusercontent.com',
+      iosClientId: 'ADD_YOUR_iOS_CLIENT_ID_HERE',
+    });
+    GoogleSignin.hasPlayServices()
+      .then(hasPlayService => {
+        if (hasPlayService) {
+          GoogleSignin.signIn()
+            .then(userInfo => {
+              console.log('userdata:' + JSON.stringify(userInfo));
+              setAuthenticated(true);
+              createUser(userInfo.user.name, userInfo.user.email, false);
+            })
+            .catch(e => {
+              console.log('ERROR IS: ' + JSON.stringify(e));
+              // return false;
+            });
+        }
+      })
+      .catch(e => {
+        console.log('ERROR IS: ' + JSON.stringify(e));
+      });
+  };
   const facebookLogin = () => {
     LoginManager.logInWithPermissions(['public_profile', 'email']).then(
       function (result) {
@@ -50,7 +78,7 @@ export default function LoginOption({navigation}) {
           <Button
             text="Sign in with Google"
             onPress={() => {
-              loginWithGoogle() && setAuthenticated(true);
+              console.log(loginWithGoogle());
             }}
           />
 

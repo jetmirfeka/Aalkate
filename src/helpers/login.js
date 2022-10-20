@@ -1,8 +1,4 @@
 import {GraphRequest, GraphRequestManager} from 'react-native-fbsdk';
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
 import axios from 'axios';
 import url from '../config/mainUrl';
 
@@ -29,30 +25,7 @@ export const getInfoFromToken = token => {
   new GraphRequestManager().addRequest(profileRequest).start();
 };
 
-export const loginWithGoogle = () => {
-  GoogleSignin.configure({
-    androidClientId:
-      '965191305920-fijnn21379t7g3jietsfpul13of914bp.apps.googleusercontent.com',
-    iosClientId: 'ADD_YOUR_iOS_CLIENT_ID_HERE',
-  });
-  GoogleSignin.hasPlayServices()
-    .then(hasPlayService => {
-      if (hasPlayService) {
-        GoogleSignin.signIn()
-          .then(userInfo => {
-            console.log('userdata:' + JSON.stringify(userInfo));
-            createUser(userInfo.user.name, userInfo.user.email, false);
-          })
-          .catch(e => {
-            console.log('ERROR IS: ' + JSON.stringify(e));
-            // return false;
-          });
-      }
-    })
-    .catch(e => {
-      console.log('ERROR IS: ' + JSON.stringify(e));
-    });
-};
+
 
 export const createUser = async (name, email, password) => {
   await axios
