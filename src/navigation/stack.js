@@ -1,4 +1,4 @@
-import {createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {Image} from 'react-native';
 
@@ -14,7 +14,7 @@ import SocialMedia from '../components/organisms/SocialMedia';
 import Bestellen from '../components/organisms/Bestellen';
 import Shop from '../components/organisms/Shop';
 
-const RootStack = createNativeStackNavigator ();
+const RootStack = createNativeStackNavigator();
 
 const header = {
   headerBackTitle: ' ',

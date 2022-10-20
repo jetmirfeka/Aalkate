@@ -2,8 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container:{
-        height:'00%',
-        flex:1
+        height:'100%',
+        flex:1,
+        marginTop:25
     },
     input:{
         color:"#33346D",
@@ -13,7 +14,8 @@ export default StyleSheet.create({
         borderColor:'black',
         paddingVertical:10,
         paddingHorizontal:10,
-        marginBottom:8
+        marginBottom:8,
+        height:50
     }
 
 })

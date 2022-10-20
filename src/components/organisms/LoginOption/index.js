@@ -7,12 +7,9 @@ import logo from '../../../assets/images/logo.png';
 import Button from '../../atoms/Buttons/LoginOption';
 
 import authContext from '../../../context/index.js';
-import {getInfoFromToken} from '../../../helpers/login';
+import {getInfoFromToken, loginWithGoogle} from '../../../helpers/login';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
+
 import SplashScreen from 'react-native-splash-screen';
 
 export default function LoginOption({navigation}) {
@@ -23,8 +20,9 @@ export default function LoginOption({navigation}) {
   }, []);
 
   const handleLogin = () => {};
+
   const facebookLogin = () => {
-    LoginManager.logInWithPermissions(['public_profile']).then(
+    LoginManager.logInWithPermissions(['public_profile', 'email']).then(
       function (result) {
         if (result.isCancelled) {
           console.log('Login cancelled');
@@ -52,28 +50,7 @@ export default function LoginOption({navigation}) {
           <Button
             text="Sign in with Google"
             onPress={() => {
-              GoogleSignin.configure({
-                androidClientId:
-                  '965191305920-fijnn21379t7g3jietsfpul13of914bp.apps.googleusercontent.com',
-                iosClientId: 'ADD_YOUR_iOS_CLIENT_ID_HERE',
-              });
-              GoogleSignin.hasPlayServices()
-                .then(hasPlayService => {
-                  if (hasPlayService) {
-                    GoogleSignin.signIn()
-                      .then(userInfo => {
-                        console.log(JSON.stringify(userInfo));
-                        setAuthenticated(true);
-                      })
-                      .catch(e => {
-                        console.log('ERROR IS: ' + JSON.stringify(e));
-                        setAuthenticated(false);
-                      });
-                  }
-                })
-                .catch(e => {
-                  console.log('ERROR IS: ' + JSON.stringify(e));
-                });
+              loginWithGoogle() && setAuthenticated(true);
             }}
           />
 
