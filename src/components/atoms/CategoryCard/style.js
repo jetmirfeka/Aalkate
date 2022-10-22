@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   conatiner: {
-    height: 150,
+    height: 170,
     position: 'relative',
     marginBottom: 16,
     display: 'flex',

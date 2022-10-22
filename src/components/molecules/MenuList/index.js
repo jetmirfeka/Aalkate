@@ -1,80 +1,42 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import axios from 'axios';
+import mainUrl from '../../../config/mainUrl';
 import styles from './styles.js';
 import MenuItems from '../../atoms/CategoryCard';
 
-const DATA = [
-  {
-    id: '1',
-    title: 'Fur den kleinen hunger/vorspeisen',
-  },
-  {
-    id: '2',
-    title: 'Salste',
-  },
-  {
-    id: '3',
-    title: 'Dit un Dat',
-  },
-  {
-    id: '4',
-    title: 'Fur den kleinen hunger/vorspeisen',
-  },
-  {
-    id: '5',
-    title: 'Salste',
-  },
-  {
-    id: '6',
-    title: 'Dit un Dat',
-  },
-];
-
-const menu = [
-  {
-    name: 'Fisch-Curry',
-    price: 17.9,
-  },
-  {
-    name: 'Fisch-Curry',
-    price: 17.9,
-  },
-  {
-    name: 'Fisch-Curry',
-    price: 17.9,
-  },
-  {
-    name: 'Fisch-Curry',
-    price: 17.9,
-  },
-  {
-    name: 'Fisch-Curry',
-    price: 17.9,
-  },
-  {
-    name: 'Fisch-Curry',
-    price: 17.9,
-  },
-  {
-    name: 'Fisch-Curry',
-    price: 17.9,
-  },
-  {
-    name: 'Fisch-Curry',
-    price: 17.9,
-  },
-];
 export default function MenuList() {
-  const menuItem = title => {
+  const [menu, setMenu] = useState();
+  const [activeId, setActiveId] = useState(1);
+
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .get(`${mainUrl}/api/getCategory?restaurant_name=Aalkate`)
+        .then(res => {
+          setMenu(res.data);
+          console.log(res);
+        })
+        .catch(err => console.log(err));
+    }
+    fetchData();
+  }, []);
+  let active = menu && menu.findIndex(item => item.id === activeId);
+  const menuItem = (title, id) => {
     return (
-      <TouchableOpacity activeOpacity={0.5} style={styles.categoryButton}>
-        <Text style={styles.text}>{title}</Text>
+      <TouchableOpacity
+        onPress={() => setActiveId(id)}
+        activeOpacity={0.5}
+        style={styles.categoryButton}>
+        <Text style={[styles.text, id === activeId && {fontWeight: 'bold'}]}>
+          {title}
+        </Text>
       </TouchableOpacity>
     );
   };
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <View
         style={{
           minHeight: 46,
@@ -83,10 +45,11 @@ export default function MenuList() {
           flexDirection: 'row',
           justifyContent: 'center',
           alignItems: 'center',
+          width: '100%',
         }}>
         <FlatList
-          data={DATA}
-          renderItem={({item}) => menuItem(item.title)}
+          data={menu}
+          renderItem={({item}) => menuItem(item.name, item.id)}
           keyExtractor={item => item.id}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -103,9 +66,9 @@ export default function MenuList() {
           }}
         />
       </View>
-      <View style={{margin: 15}}>
+      <View style={{margin: 25}}>
         <FlatList
-          data={menu}
+          data={menu && menu[active].items}
           numColumns={1}
           renderItem={({item, index}) => (
             <MenuItems
