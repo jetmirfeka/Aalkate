@@ -25,8 +25,6 @@ export const getInfoFromToken = token => {
   new GraphRequestManager().addRequest(profileRequest).start();
 };
 
-
-
 export const createUser = async (name, email, password) => {
   await axios
     .post(`${url}/api/addUser`, {
