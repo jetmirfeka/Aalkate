@@ -28,7 +28,8 @@ export default function LoginOption({navigation}) {
     GoogleSignin.configure({
       androidClientId:
         '965191305920-fijnn21379t7g3jietsfpul13of914bp.apps.googleusercontent.com',
-      iosClientId: 'ADD_YOUR_iOS_CLIENT_ID_HERE',
+      iosClientId:
+        '970455000001-pnujkurgo50g3cflc53lo57ltqgknf1g.apps.googleusercontent.com',
     });
     GoogleSignin.hasPlayServices()
       .then(hasPlayService => {
