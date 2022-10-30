@@ -23,7 +23,7 @@ export default function LoginWithEmail({navigation}) {
     if (email && password) {
       setLoading(true);
       await axios
-        .post(`${url}`, {
+        .post(`${url}/api/login`, {
           email: email,
           password: password
         })
