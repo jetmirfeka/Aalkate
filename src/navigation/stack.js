@@ -1,7 +1,7 @@
+import React, {useContext} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {Image} from 'react-native';
-
+import {Image, View} from 'react-native';
 import Home from '../screens/Home';
 import Menu from '../screens/Menu';
 import ContactUs from '../screens/ContactUs';
@@ -13,11 +13,13 @@ import Hotels from '../components/organisms/Hotels';
 import SocialMedia from '../components/organisms/SocialMedia';
 import Bestellen from '../components/organisms/Bestellen';
 import Shop from '../components/organisms/Shop';
+import authContext from '../context/index';
 
 const RootStack = createNativeStackNavigator();
 
 const header = {
   headerBackTitle: ' ',
+  headerTitleAlign: 'center',
   headerStyle: {
     height: 120,
     elevation: 0,
@@ -29,19 +31,32 @@ const header = {
   headerTitle: (
     props, // App Logo
   ) => (
-    <Image
-      style={{width: 200, height: 50}}
-      source={require('../assets/images/logo.png')}
-      resizeMode="contain"
-    />
+    <View>
+      <Image
+        style={{
+          width: 200,
+          height: 50,
+        }}
+        source={require('../assets/images/logo.png')}
+        resizeMode="contain"
+      />
+    </View>
   ),
 };
 
-export function screens() {
+export function Screens() {
+  const {setAuthenticated} = useContext(authContext);
+  console.log(setAuthenticated);
   return (
     <NavigationContainer>
       <RootStack.Navigator initialRouteName="Home">
-        <RootStack.Screen options={{...header}} name="Home" component={Home} />
+        <RootStack.Screen
+          options={{
+            ...header,
+          }}
+          name="Home"
+          component={Home}
+        />
         <RootStack.Screen options={{...header}} name="Menu" component={Menu} />
         <RootStack.Screen
           options={{...header}}

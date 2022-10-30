@@ -36,6 +36,7 @@ export const createUser = async (name, email, password) => {
     .then(res => {
       console.log(res);
       password && alert('You have Successfully Registered');
+
       return true;
     })
     .catch(err => {

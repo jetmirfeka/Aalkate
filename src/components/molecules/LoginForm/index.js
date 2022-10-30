@@ -23,9 +23,9 @@ export default function LoginWithEmail({navigation}) {
     if (email && password) {
       setLoading(true);
       await axios
-        .post(`${url}/login`, {
+        .post(`${url}`, {
           email: email,
-          password: password,
+          password: password
         })
         .then(res => {
           console.log(res);
@@ -42,7 +42,6 @@ export default function LoginWithEmail({navigation}) {
       alert('Please enter your data');
     }
   };
-
 
   return (
     <View style={styles.container}>

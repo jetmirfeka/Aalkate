@@ -22,7 +22,6 @@ export default function LoginOption({navigation}) {
     SplashScreen.hide();
   }, []);
 
-  const handleLogin = () => {};
 
   const loginWithGoogle = () => {
     GoogleSignin.configure({

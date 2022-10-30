@@ -1,15 +1,38 @@
-import React, {useState} from 'react';
-import {StatusBar} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {StatusBar, View} from 'react-native';
 import Context from './src/context';
-import {screens, loginScreens} from './src/navigation/stack';
+import {Screens, loginScreens} from './src/navigation/stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(null);
+
+  const getData = async () => {
+    await AsyncStorage.getAllKeys().then(console.log);
+    try {
+      const value = await AsyncStorage.getItem('@logged').then(e => {
+        console.log(e);
+        e === 'logged' ? setAuthenticated(true) : setAuthenticated(false);
+      });
+      if (value !== null) {
+        // value previously stored
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+  getData();
 
   return (
     <Context.Provider value={{authenticated, setAuthenticated}}>
       <StatusBar animated={true} backgroundColor="#000" />
-      {!authenticated ? loginScreens() : screens()}
+      {authenticated === null ? (
+        <View></View>
+      ) : authenticated === false ? (
+        loginScreens()
+      ) : (
+        Screens()
+      )}
     </Context.Provider>
   );
 }
