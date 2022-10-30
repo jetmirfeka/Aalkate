@@ -30,6 +30,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.970455000001-pnujkurgo50g3cflc53lo57ltqgknf1g</string>
+				<string>fb689167915706262</string>
 			</array>
 		</dict>
 	</array>
@@ -64,16 +65,6 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-
-	<key>CFBundleURLTypes</key>
-	<array>
-	<dict>
-		<key>CFBundleURLSchemes</key>
-		<array>
-		<string>fb689167915706262</string>
-		</array>
-	</dict>
-	</array>
 	<key>FacebookAppID</key>
 	<string>689167915706262</string>
 	<key>FacebookDisplayName</key>
