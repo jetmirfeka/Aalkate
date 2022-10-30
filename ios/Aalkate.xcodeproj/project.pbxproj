@@ -14,6 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-Aalkate-AalkateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Aalkate-AalkateTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B563AC0B290F3E1C0077C991 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B563AC0A290F3E1C0077C991 /* main.jsbundle */; };
 		B56F80C5290E9CEA006AFC5A /* 144.png in Resources */ = {isa = PBXBuildFile; fileRef = B56F80C4290E9CEA006AFC5A /* 144.png */; };
 		B56F80C7290E9E3D006AFC5A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B56F80C6290E9E3D006AFC5A /* logo.png */; };
 		B5E0D988290DB65300977CE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5E0D987290DB65300977CE7 /* GoogleService-Info.plist */; };
@@ -46,6 +47,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-Aalkate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Aalkate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Aalkate/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Aalkate-AalkateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aalkate-AalkateTests.release.xcconfig"; path = "Target Support Files/Pods-Aalkate-AalkateTests/Pods-Aalkate-AalkateTests.release.xcconfig"; sourceTree = "<group>"; };
+		B563AC0A290F3E1C0077C991 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		B56F80C4290E9CEA006AFC5A /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
 		B56F80C6290E9E3D006AFC5A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../src/assets/images/logo.png; sourceTree = "<group>"; };
 		B5E0D987290DB65300977CE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				B563AC0A290F3E1C0077C991 /* main.jsbundle */,
 				13B07FAE1A68108700A75B9A /* Aalkate */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* AalkateTests */,
@@ -251,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B563AC0B290F3E1C0077C991 /* main.jsbundle in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				B56F80C7290E9E3D006AFC5A /* logo.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
