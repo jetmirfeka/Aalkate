@@ -3,6 +3,7 @@ import {View, Image, Text, But} from 'react-native';
 import styles from './styles.js';
 
 import img from '../../../assets/images/second-splash.jpg';
+import images from '../../../assets/images/index.js';
 import logo from '../../../assets/images/logo.png';
 import Button from '../../atoms/Buttons/LoginOption';
 import {
@@ -21,7 +22,6 @@ export default function LoginOption({navigation}) {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
-
 
   const loginWithGoogle = () => {
     GoogleSignin.configure({
@@ -71,7 +71,7 @@ export default function LoginOption({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Image source={img} style={styles.img} />
+      <Image source={images.splashScreen} style={styles.img} />
       <View style={styles.wrapper}>
         <Image style={styles.logo} source={logo} />
         <View style={{width: '100%'}}>
