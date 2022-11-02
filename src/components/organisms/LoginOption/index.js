@@ -12,7 +12,7 @@ import {
 } from '@react-native-google-signin/google-signin';
 import authContext from '../../../context/index.js';
 import {getInfoFromToken, createUser} from '../../../helpers/login';
-import {LoginManager, AccessToken} from 'react-native-fbsdk';
+import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 
 import SplashScreen from 'react-native-splash-screen';
 
@@ -57,6 +57,7 @@ export default function LoginOption({navigation}) {
         } else {
           AccessToken.getCurrentAccessToken().then(data => {
             const accessToken = data.accessToken.toString();
+            console.log(accessToken);
             getInfoFromToken(accessToken);
             setAuthenticated(true);
           });
@@ -78,7 +79,7 @@ export default function LoginOption({navigation}) {
           <Button
             text="Sign in with Google"
             onPress={() => {
-              console.log(loginWithGoogle());
+              loginWithGoogle();
             }}
           />
 

@@ -21,7 +21,6 @@ const header = {
   headerBackTitle: ' ',
   headerTitleAlign: 'center',
   headerStyle: {
-    height: 120,
     elevation: 0,
     shadowOpacity: 0,
     backgroundColor: '#010101',
@@ -31,11 +30,12 @@ const header = {
   headerTitle: (
     props, // App Logo
   ) => (
-    <View>
+    <View style={{}}>
       <Image
         style={{
-          width: 200,
-          height: 50,
+          width:180,
+          height: 40,
+          resizeMode:'contain'
         }}
         source={require('../assets/images/logo.png')}
         resizeMode="contain"

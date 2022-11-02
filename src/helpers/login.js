@@ -1,4 +1,4 @@
-import {GraphRequest, GraphRequestManager} from 'react-native-fbsdk';
+import {GraphRequest, GraphRequestManager} from 'react-native-fbsdk-next';
 import axios from 'axios';
 import url from '../config/mainUrl';
 
